@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rama Devi | Senior .NET Full Stack Developer & Cloud Architect</title>
+  <meta name="description" content="Senior .NET Full Stack Developer with 10+ years building high-scale distributed systems, cloud microservices, and modern UI solutions for Microsoft, CVS Health, LACOE, and eBay.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Ambient Glows -->
+  <div class="ambient-glow" style="top: -100px; left: -100px;"></div>
+  <div class="ambient-glow" style="bottom: 10%; right: -150px; background: radial-gradient(circle, var(--accent-secondary) 0%, transparent 70%);"></div>
+
+  <!-- NAVIGATION -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <span class="nav-logo-icon">R</span>
+        <span>Rama<span style="color: var(--accent);">.Dev</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#architecture" class="nav-link">Architecture</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Theme Palette Switcher -->
+        <div class="theme-picker" title="Switch Accent Theme">
+          <span class="theme-dot cyan" data-theme="cyan" title="Cyber Cyan"></span>
+          <span class="theme-dot violet" data-theme="violet" title="Electric Violet"></span>
+          <span class="theme-dot emerald" data-theme="emerald" title="Matrix Emerald"></span>
+          <span class="theme-dot amber" data-theme="amber" title="Amber Flare"></span>
+        </div>
+
+        <!-- Sound FX Toggle -->
+        <button id="sound-toggle-btn" class="btn btn-secondary btn-sm" title="Toggle UI Sound Effects" style="padding: 0.45rem;">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"/></svg>
+        </button>
+
+        <!-- Download DOCX Resume -->
+        <a href="assets/Rama_Senior_NET_Full_Stack_Developer.docx" download="Rama_Senior_NET_Full_Stack_Developer.docx" class="btn btn-primary btn-sm" title="Download Word Resume (.docx)">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>Resume (.docx)</span>
+        </a>
+
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section" id="hero">
+    <canvas id="particle-canvas"></canvas>
+
+    <div class="container hero-content">
+      <div class="hero-text">
+        <div class="badge">
+          <span class="badge-dot"></span>
+          <span>Open to Senior / Lead Full Stack Engineering Roles</span>
+        </div>
+
+        <h1 class="hero-title">
+          Engineering High-Scale <br>
+          <span class="text-gradient">.NET & Cloud Ecosystems</span>
+        </h1>
+
+        <div class="hero-subtitle-wrapper">
+          <span id="typing-text">Senior .NET Full Stack Developer</span>
+          <span class="typing-cursor"></span>
+        </div>
+
+        <p class="hero-desc">
+          <strong>10+ years</strong> architecting and implementing mission-critical enterprise applications for industry leaders including 
+          <strong>Microsoft</strong>, <strong>CVS Health</strong>, and <strong>LACOE</strong>. Specializing in modern 
+          <strong>.NET 10/8, C#, ASP.NET Core microservices, AWS/Azure cloud-native solutions</strong>, and reactive 
+          <strong>React, Angular & Blazor</strong> interfaces.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#projects" class="btn btn-primary">
+            <span>Explore Enterprise Work</span>
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="assets/Rama_Senior_NET_Full_Stack_Developer.docx" download="Rama_Senior_NET_Full_Stack_Developer.docx" class="btn btn-secondary">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Download Resume (.docx)</span>
+          </a>
+          <a href="#experience" class="btn btn-secondary">
+            <span>View Experience</span>
+          </a>
+        </div>
+
+        <div class="hero-tech-strip">
+          <span>Core Stack:</span>
+          <span class="tech-pill">.NET 10 / C#</span>
+          <span class="tech-pill">ASP.NET Core</span>
+          <span class="tech-pill">Azure & AWS</span>
+          <span class="tech-pill">Microservices</span>
+          <span class="tech-pill">React & Blazor</span>
+          <span class="tech-pill">Angular 19</span>
+          <span class="tech-pill">FHIR & HIPAA</span>
+        </div>
+      </div>
+
+      <!-- Right Visual Card -->
+      <div class="hero-card-wrapper" id="about">
+        <div class="hero-visual-card">
+          <div class="profile-card-header">
+            <div class="profile-avatar-box">
+              <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+              <div class="profile-status-indicator" title="Available"></div>
+            </div>
+            <div class="profile-title-box">
+              <h3>Rama Devi</h3>
+              <p>Senior .NET Full Stack Developer</p>
+              <div class="profile-location-chip">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>California, USA (Open to Remote / Hybrid)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Direct Phone & Email Contact Info -->
+          <div class="profile-direct-contact">
+            <div class="profile-contact-item">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              <a href="tel:8409776552" style="color: inherit; text-decoration: none;">(840) 977-6552</a>
+            </div>
+            <div class="profile-contact-item">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:rkreddy313579@gmail.com" style="color: inherit; text-decoration: none;">rkreddy313579@gmail.com</a>
+              <button class="copy-chip-btn" id="copy-email-btn" title="Copy email to clipboard">
+                <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="hero-stats-grid">
+            <div class="stat-box">
+              <div class="stat-number">10<span>+</span></div>
+              <div class="stat-label">Years IT Experience</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">7<span>+</span></div>
+              <div class="stat-label">Enterprise Engagements</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">40<span>+</span></div>
+              <div class="stat-label">Production Microservices</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">99.9<span>%</span></div>
+              <div class="stat-label">Uptime & Reliability</div>
+            </div>
+          </div>
+
+          <!-- Code Snippet Box -->
+          <div class="code-snippet-box">
+            <div class="code-header">
+              <div class="code-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <span>EnterpriseArchitecture.cs</span>
+            </div>
+            <div class="code-line"><span class="code-keyword">public sealed record</span> <span class="code-var">EngineerProfile</span>(</div>
+            <div class="code-line">&nbsp;&nbsp;<span class="code-string">"Rama Devi"</span>,</div>
+            <div class="code-line">&nbsp;&nbsp;<span class="code-keyword">Specialties</span>: [ <span class="code-string">"Cloud Microservices"</span>, <span class="code-string">".NET 10"</span>, <span class="code-string">"AI Copilot"</span> ]</div>
+            <div class="code-line">);</div>
+            <div class="code-line" style="margin-top: 0.35rem;"><span class="code-comment">// Ready for mission-critical enterprise scaling</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE CLIENT TICKER -->
+  <section class="marquee-section">
+    <div class="marquee-track">
+      <!-- Clients Set 1 -->
+      <div class="client-item">
+        <span class="client-badge-mini">ENTERPRISE</span>
+        <span>AETNA / CVS HEALTH</span>
+      </div>
+      <div class="client-item">
+        <span class="client-badge-mini">TECH GIANT</span>
+        <span>MICROSOFT CORPORATION</span>
+      </div>
+      <div class="client-item">
+        <span class="client-badge-mini">PUBLIC SECTOR</span>
+        <span>LA COUNTY OFFICE OF EDUCATION</span>
+      </div>
+      <div class="client-item">
+        <span class="client-badge-mini">FINTECH & COMMERCE</span>
+        <span>EBAY INC.</span>
+      </div>
+      <div class="client-item">
+        <span class="client-badge-mini">INSURTECH</span>
+        <span>NATIONWIDE INSURANCE</span>
+      </div>
+      <div class="client-item">
+        <span class="client-badge-mini">FINANCIAL</span>
+        <span>PROGRESSIVE INSURANCE</span>
+      </div>
+      <div class="client-item">
+        <span class="client-badge-mini">BANKING & GOV</span>
+        <span>BARTRONICS INDIA</span>
+      </div>
+
+      <!-- Clients Set 2 (Duplicate for Seamless Loop) -->
+      <div class="client-item">
+        <span class="client-badge-mini">ENTERPRISE</span>
+        <span>AETNA / CVS HEALTH</span>
+      </div>
+      <div class="client-item">
+        <span class="client-badge-mini">TECH GIANT</span>
+        <span>MICROSOFT CORPORATION</span>
+      </div>
+      <div class="client-item">
+        <span class="client-badge-mini">PUBLIC SECTOR</span>
+        <span>LA COUNTY OFFICE OF EDUCATION</span>
+      </div>
+      <div class="client-item">
+        <span class="client-badge-mini">FINTECH & COMMERCE</span>
+        <span>EBAY INC.</span>
+      </div>
+      <div class="client-item">
+        <span class="client-badge-mini">INSURTECH</span>
+        <span>NATIONWIDE INSURANCE</span>
+      </div>
+      <div class="client-item">
+        <span class="client-badge-mini">FINANCIAL</span>
+        <span>PROGRESSIVE INSURANCE</span>
+      </div>
+      <div class="client-item">
+        <span class="client-badge-mini">BANKING & GOV</span>
+        <span>BARTRONICS INDIA</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE & SYSTEM DESIGN EXPLORER -->
+  <section class="section" id="architecture">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">System Design & Patterns</span>
+        <h2 class="section-title">Enterprise Architecture Showcase</h2>
+        <p class="section-subtitle">
+          Interactive blueprint breakdown of multi-tier, event-driven, and cloud-native solutions engineered for millions of enterprise users.
+        </p>
+      </div>
+
+      <div class="arch-card">
+        <div class="arch-tabs">
+          <button class="arch-tab-btn active" data-arch="cvs">
+            <span>CVS Health: Modern .NET 10 Healthcare Pipeline</span>
+          </button>
+          <button class="arch-tab-btn" data-arch="microsoft">
+            <span>Microsoft: Flighting & Data Classification Engine</span>
+          </button>
+          <button class="arch-tab-btn" data-arch="lacoe">
+            <span>LACOE: Multi-District Education Data Exchange</span>
+          </button>
+        </div>
+
+        <!-- Panel 1: CVS Health -->
+        <div class="arch-content-panel active" id="arch-cvs">
+          <div class="arch-grid">
+            <div class="flow-diagram">
+              <div class="flow-title">
+                <span>Architecture Flow: Event-Driven FHIR Hub</span>
+                <span style="color: #22c55e;">● Production Live</span>
+              </div>
+              <div class="flow-nodes-wrapper">
+                <div class="flow-step">
+                  <div class="flow-step-icon">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                  </div>
+                  <div class="flow-step-text">
+                    <h4>React 18 & Blazor Web UI</h4>
+                    <p>Dynamic data grids, state management, HIPAA compliant input forms & AI Copilot chat widgets.</p>
+                  </div>
+                </div>
+                <div class="flow-connector"></div>
+
+                <div class="flow-step">
+                  <div class="flow-step-icon">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/></svg>
+                  </div>
+                  <div class="flow-step-text">
+                    <h4>ASP.NET Core / .NET 10 API Gateway & SignalR Hub</h4>
+                    <p>OAuth 2.0 / OpenID Connect, high-throughput caching, async validation, and live push notifications.</p>
+                  </div>
+                </div>
+                <div class="flow-connector"></div>
+
+                <div class="flow-step">
+                  <div class="flow-step-icon">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg>
+                  </div>
+                  <div class="flow-step-text">
+                    <h4>AWS EventBridge & Lambda Orchestration</h4>
+                    <p>Loosely coupled event bus routing FHIR resource payloads (Patient, MedicationRequest, Observation).</p>
+                  </div>
+                </div>
+                <div class="flow-connector"></div>
+
+                <div class="flow-step">
+                  <div class="flow-step-icon">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                  </div>
+                  <div class="flow-step-text">
+                    <h4>SQL Server 2022 + DynamoDB Storage & SSRS/Power BI</h4>
+                    <p>Sub-millisecond query execution plans, automated audit logging, and analytical executive dashboards.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="arch-details-box">
+              <h3>CVS Health Cloud Modernization</h3>
+              <p>
+                Led the upgrade of enterprise healthcare applications from .NET 8 to .NET 10, refactoring legacy dependencies and orchestrating event-driven cloud integrations across AWS and Azure.
+              </p>
+
+              <ul class="arch-highlights-list">
+                <li>
+                  <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>FHIR Standards:</strong> Full compliance for Patient, Encounter, and Immunization endpoints.</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>AI Copilot Integration:</strong> Built backend APIs integrating Microsoft Copilot agents for automated clinical workflows.</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>Cross-Platform MAUI:</strong> Implemented .NET MAUI iOS apps with background silent push notifications and deep linking.</span>
+                </li>
+              </ul>
+
+              <div class="arch-metrics-pills">
+                <div class="metric-pill">
+                  <strong>.NET 10</strong>
+                  <span>Latest LTS Target</span>
+                </div>
+                <div class="metric-pill">
+                  <strong>100%</strong>
+                  <span>HIPAA Compliance</span>
+                </div>
+                <div class="metric-pill">
+                  <strong>EventBridge</strong>
+                  <span>Decoupled Bus</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 2: Microsoft -->
+        <div class="arch-content-panel" id="arch-microsoft">
+          <div class="arch-grid">
+            <div class="flow-diagram">
+              <div class="flow-title">
+                <span>Architecture Flow: Microsoft DCS & Flighting Platform</span>
+                <span style="color: #00f2fe;">● Purview Cloud Scale</span>
+              </div>
+              <div class="flow-nodes-wrapper">
+                <div class="flow-step">
+                  <div class="flow-step-icon">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 000 20 14.5 14.5 0 000-20"/><path d="M2 12h20"/></svg>
+                  </div>
+                  <div class="flow-step-text">
+                    <h4>Azure Application Gateway & Weighted DNS Routing</h4>
+                    <p>Multi-region high availability traffic distribution across Microsoft 365 Substrate.</p>
+                  </div>
+                </div>
+                <div class="flow-connector"></div>
+
+                <div class="flow-step">
+                  <div class="flow-step-icon">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                  </div>
+                  <div class="flow-step-text">
+                    <h4>MS Exchange Throttling & Flighting Engine</h4>
+                    <p>Dynamic runtime policy enforcement (10,000 email quota limits) and phased feature flag rollouts.</p>
+                  </div>
+                </div>
+                <div class="flow-connector"></div>
+
+                <div class="flow-step">
+                  <div class="flow-step-icon">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  </div>
+                  <div class="flow-step-text">
+                    <h4>Data Classification Service (DCS) / Microsoft Purview</h4>
+                    <p>Real-time sensitive data inspection, pattern matching, DLP enforcement, and audit telemetry.</p>
+                  </div>
+                </div>
+                <div class="flow-connector"></div>
+
+                <div class="flow-step">
+                  <div class="flow-step-icon">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                  </div>
+                  <div class="flow-step-text">
+                    <h4>Azure Redis Cache, Service Bus & SQL Managed Instance</h4>
+                    <p>Sub-millisecond policy caching and asynchronous messaging via AMQ / Solace / RabbitMQ.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="arch-details-box">
+              <h3>Microsoft Purview & Substrate Engine</h3>
+              <p>
+                Engineered distributed cloud-native services for Microsoft Redmond, powering the Flighting feature management engine, Exchange Online outbound throttling, and Data Classification Service (DCS).
+              </p>
+
+              <ul class="arch-highlights-list">
+                <li>
+                  <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>Flighting Platform:</strong> Supported staged experimentation, A/B cohorts, and zero-downtime rollbacks for Windows & M365 features.</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>Exchange Throttling:</strong> Enforced dynamic mailbox quotas (10k emails) with real-time administrator policy overrides.</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>MS Approvals:</strong> Real-time approval history and actionable email cards via SignalR and Entity Framework Core.</span>
+                </li>
+              </ul>
+
+              <div class="arch-metrics-pills">
+                <div class="metric-pill">
+                  <strong>M365 Scale</strong>
+                  <span>Global Substrate</span>
+                </div>
+                <div class="metric-pill">
+                  <strong>&lt; 50ms</strong>
+                  <span>Policy Evaluation</span>
+                </div>
+                <div class="metric-pill">
+                  <strong>Purview DLP</strong>
+                  <span>Enterprise Security</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 3: LACOE -->
+        <div class="arch-content-panel" id="arch-lacoe">
+          <div class="arch-grid">
+            <div class="flow-diagram">
+              <div class="flow-title">
+                <span>Architecture Flow: LACOE Data Exchange Layer</span>
+                <span style="color: #a855f7;">● K-12 Statewide Infrastructure</span>
+              </div>
+              <div class="flow-nodes-wrapper">
+                <div class="flow-step">
+                  <div class="flow-step-icon">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/></svg>
+                  </div>
+                  <div class="flow-step-text">
+                    <h4>Angular 19 & Blazor WebAssembly Portals</h4>
+                    <p>Responsive district portals with Kendo UI grids, client-side validation, and role-based views.</p>
+                  </div>
+                </div>
+                <div class="flow-connector"></div>
+
+                <div class="flow-step">
+                  <div class="flow-step-icon">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                  </div>
+                  <div class="flow-step-text">
+                    <h4>ASP.NET Core Data Exchange Layer</h4>
+                    <p>Validation, ingestion, and conversion of IFC sign data across 80+ school district departments.</p>
+                  </div>
+                </div>
+                <div class="flow-connector"></div>
+
+                <div class="flow-step">
+                  <div class="flow-step-icon">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  </div>
+                  <div class="flow-step-text">
+                    <h4>RabbitMQ & AKS Microservices</h4>
+                    <p>Asynchronous queueing, resilient retry policies, container orchestration, and horizontal pod scaling.</p>
+                  </div>
+                </div>
+                <div class="flow-connector"></div>
+
+                <div class="flow-step">
+                  <div class="flow-step-icon">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                  </div>
+                  <div class="flow-step-text">
+                    <h4>SQL Server 2019 + Power BI Reporting</h4>
+                    <p>Automated SSRS executive reports and real-time Power BI data models for K-12 administration.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="arch-details-box">
+              <h3>LACOE Statewide Education Data Layer</h3>
+              <p>
+                Architected and modernized public-sector applications serving Los Angeles County K-12 education, standardizing multi-department data transfer pipelines and migrating legacy systems into .NET Core microservices.
+              </p>
+
+              <ul class="arch-highlights-list">
+                <li>
+                  <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>OAuth 2.0 & Single Sign-On:</strong> Unified authentication across dozens of disparate educational district applications.</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>IFC Sign Data Integration:</strong> Standardized multi-department schema validation with automated ETL.</span>
+                </li>
+                <li>
+                  <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>Azure DevOps CI/CD:</strong> Built end-to-end automated pipelines with zero-downtime releases on AKS.</span>
+                </li>
+              </ul>
+
+              <div class="arch-metrics-pills">
+                <div class="metric-pill">
+                  <strong>80+</strong>
+                  <span>Districts Integrated</span>
+                </div>
+                <div class="metric-pill">
+                  <strong>RabbitMQ</strong>
+                  <span>Reliable Queuing</span>
+                </div>
+                <div class="metric-pill">
+                  <strong>AKS</strong>
+                  <span>Kubernetes Scaled</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS & PROFICIENCY MATRIX -->
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Competency Stack</span>
+        <h2 class="section-title">Technical Skills Matrix</h2>
+        <p class="section-subtitle">
+          Comprehensive inventory of languages, frameworks, cloud infrastructure, and enterprise tools honed over a decade in production.
+        </p>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="skills-filter-nav">
+        <button class="filter-btn active" data-filter="all">All Disciplines</button>
+        <button class="filter-btn" data-filter="dotnet">.NET & Backend</button>
+        <button class="filter-btn" data-filter="cloud">Cloud & DevOps</button>
+        <button class="filter-btn" data-filter="frontend">Frontend & UI</button>
+        <button class="filter-btn" data-filter="data">Databases & Messaging</button>
+        <button class="filter-btn" data-filter="testing">Testing & Architecture</button>
+      </div>
+
+      <div class="skills-grid">
+        <!-- Skill 1 -->
+        <div class="skill-card" data-category="dotnet">
+          <div>
+            <div class="skill-card-top">
+              <div class="skill-icon-wrap">⚡</div>
+              <span class="skill-badge">10+ YRS</span>
+            </div>
+            <h3 class="skill-title">C# & Modern .NET</h3>
+            <p class="skill-desc">Deep mastery from legacy .NET 3.5/4.8 through modern .NET 6/7/8 and latest .NET 10. Async/await multithreading, LINQ, and OOP.</p>
+          </div>
+          <div>
+            <div class="skill-bar-outer"><div class="skill-bar-inner" style="width: 98%;"></div></div>
+            <div class="skill-tags">
+              <span class="skill-tag-pill">.NET 10/8/6</span>
+              <span class="skill-tag-pill">C# 12</span>
+              <span class="skill-tag-pill">LINQ</span>
+              <span class="skill-tag-pill">Multithreading</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skill 2 -->
+        <div class="skill-card" data-category="dotnet">
+          <div>
+            <div class="skill-card-top">
+              <div class="skill-icon-wrap">🌐</div>
+              <span class="skill-badge">10+ YRS</span>
+            </div>
+            <h3 class="skill-title">ASP.NET Core & Web API</h3>
+            <p class="skill-desc">High-performance RESTful APIs, Swagger documentation, custom middleware, dependency injection, and SignalR real-time hubs.</p>
+          </div>
+          <div>
+            <div class="skill-bar-outer"><div class="skill-bar-inner" style="width: 96%;"></div></div>
+            <div class="skill-tags">
+              <span class="skill-tag-pill">ASP.NET Core</span>
+              <span class="skill-tag-pill">Web API</span>
+              <span class="skill-tag-pill">SignalR</span>
+              <span class="skill-tag-pill">WCF / SOAP</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skill 3 -->
+        <div class="skill-card" data-category="cloud">
+          <div>
+            <div class="skill-card-top">
+              <div class="skill-icon-wrap">☁️</div>
+              <span class="skill-badge">7+ YRS</span>
+            </div>
+            <h3 class="skill-title">Microsoft Azure Cloud</h3>
+            <p class="skill-desc">Azure App Services, Azure Functions (Serverless), Blob Storage, Service Bus, Azure Redis, Application Gateway, ARM templates & AKS.</p>
+          </div>
+          <div>
+            <div class="skill-bar-outer"><div class="skill-bar-inner" style="width: 92%;"></div></div>
+            <div class="skill-tags">
+              <span class="skill-tag-pill">Azure Functions</span>
+              <span class="skill-tag-pill">Service Bus</span>
+              <span class="skill-tag-pill">AKS</span>
+              <span class="skill-tag-pill">Azure Redis</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skill 4 -->
+        <div class="skill-card" data-category="cloud">
+          <div>
+            <div class="skill-card-top">
+              <div class="skill-icon-wrap">🚀</div>
+              <span class="skill-badge">5+ YRS</span>
+            </div>
+            <h3 class="skill-title">AWS Cloud Services</h3>
+            <p class="skill-desc">Serverless architecture using AWS Lambda, EventBridge event routing, API Gateway, S3, DynamoDB, SQS, EC2 and CloudFront.</p>
+          </div>
+          <div>
+            <div class="skill-bar-outer"><div class="skill-bar-inner" style="width: 88%;"></div></div>
+            <div class="skill-tags">
+              <span class="skill-tag-pill">AWS Lambda</span>
+              <span class="skill-tag-pill">EventBridge</span>
+              <span class="skill-tag-pill">DynamoDB</span>
+              <span class="skill-tag-pill">SQS / S3</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skill 5 -->
+        <div class="skill-card" data-category="frontend">
+          <div>
+            <div class="skill-card-top">
+              <div class="skill-icon-wrap">⚛️</div>
+              <span class="skill-badge">6+ YRS</span>
+            </div>
+            <h3 class="skill-title">React & Ecosystem</h3>
+            <p class="skill-desc">Single Page Applications using React Hooks, Context API, Redux state management, custom reusable UI components, and API integration.</p>
+          </div>
+          <div>
+            <div class="skill-bar-outer"><div class="skill-bar-inner" style="width: 90%;"></div></div>
+            <div class="skill-tags">
+              <span class="skill-tag-pill">React 18</span>
+              <span class="skill-tag-pill">Hooks</span>
+              <span class="skill-tag-pill">Redux</span>
+              <span class="skill-tag-pill">Single Page App</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skill 6 -->
+        <div class="skill-card" data-category="frontend">
+          <div>
+            <div class="skill-card-top">
+              <div class="skill-icon-wrap">🅰️</div>
+              <span class="skill-badge">8+ YRS</span>
+            </div>
+            <h3 class="skill-title">Angular & Blazor</h3>
+            <p class="skill-desc">Enterprise SPAs across Angular 2 through latest Angular 19, Blazor WebAssembly & Server, TypeScript, Kendo UI, and Telerik controls.</p>
+          </div>
+          <div>
+            <div class="skill-bar-outer"><div class="skill-bar-inner" style="width: 93%;"></div></div>
+            <div class="skill-tags">
+              <span class="skill-tag-pill">Angular 19/18/8</span>
+              <span class="skill-tag-pill">Blazor WASM</span>
+              <span class="skill-tag-pill">TypeScript</span>
+              <span class="skill-tag-pill">Kendo UI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skill 7 -->
+        <div class="skill-card" data-category="data">
+          <div>
+            <div class="skill-card-top">
+              <div class="skill-icon-wrap">🗄️</div>
+              <span class="skill-badge">10+ YRS</span>
+            </div>
+            <h3 class="skill-title">SQL Server & T-SQL Tuning</h3>
+            <p class="skill-desc">Complex stored procedures, execution plan analysis, index optimization, triggers, views, SSIS ETL packages and SSRS reporting.</p>
+          </div>
+          <div>
+            <div class="skill-bar-outer"><div class="skill-bar-inner" style="width: 95%;"></div></div>
+            <div class="skill-tags">
+              <span class="skill-tag-pill">SQL Server 2022</span>
+              <span class="skill-tag-pill">T-SQL Tuning</span>
+              <span class="skill-tag-pill">SSIS / SSRS</span>
+              <span class="skill-tag-pill">Oracle 11g</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skill 8 -->
+        <div class="skill-card" data-category="data">
+          <div>
+            <div class="skill-card-top">
+              <div class="skill-icon-wrap">🔗</div>
+              <span class="skill-badge">8+ YRS</span>
+            </div>
+            <h3 class="skill-title">ORM & Messaging Queues</h3>
+            <p class="skill-desc">Entity Framework Core, Dapper high-performance micro-ORM, RabbitMQ message brokers, Apache ActiveMQ, and Solace event routing.</p>
+          </div>
+          <div>
+            <div class="skill-bar-outer"><div class="skill-bar-inner" style="width: 91%;"></div></div>
+            <div class="skill-tags">
+              <span class="skill-tag-pill">EF Core</span>
+              <span class="skill-tag-pill">Dapper</span>
+              <span class="skill-tag-pill">RabbitMQ</span>
+              <span class="skill-tag-pill">Solace / AMQ</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skill 9 -->
+        <div class="skill-card" data-category="cloud">
+          <div>
+            <div class="skill-card-top">
+              <div class="skill-icon-wrap">🔄</div>
+              <span class="skill-badge">7+ YRS</span>
+            </div>
+            <h3 class="skill-title">CI/CD & DevOps</h3>
+            <p class="skill-desc">Azure DevOps Pipelines, GitHub Actions, Docker containerization, Kubernetes (AKS), TFS, Harness, and TeamCity build automation.</p>
+          </div>
+          <div>
+            <div class="skill-bar-outer"><div class="skill-bar-inner" style="width: 90%;"></div></div>
+            <div class="skill-tags">
+              <span class="skill-tag-pill">Azure DevOps</span>
+              <span class="skill-tag-pill">Docker</span>
+              <span class="skill-tag-pill">Kubernetes</span>
+              <span class="skill-tag-pill">GitHub Actions</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skill 10 -->
+        <div class="skill-card" data-category="testing">
+          <div>
+            <div class="skill-card-top">
+              <div class="skill-icon-wrap">🧪</div>
+              <span class="skill-badge">9+ YRS</span>
+            </div>
+            <h3 class="skill-title">Testing & TDD</h3>
+            <p class="skill-desc">Test-Driven Development (TDD) using xUnit, NUnit, MSTest, SpecFlow (BDD), Selenium WebDriver automated UI testing, and Postman API tests.</p>
+          </div>
+          <div>
+            <div class="skill-bar-outer"><div class="skill-bar-inner" style="width: 89%;"></div></div>
+            <div class="skill-tags">
+              <span class="skill-tag-pill">xUnit / NUnit</span>
+              <span class="skill-tag-pill">SpecFlow BDD</span>
+              <span class="skill-tag-pill">Selenium</span>
+              <span class="skill-tag-pill">Postman / Fiddler</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skill 11 -->
+        <div class="skill-card" data-category="testing">
+          <div>
+            <div class="skill-card-top">
+              <div class="skill-icon-wrap">🛡️</div>
+              <span class="skill-badge">8+ YRS</span>
+            </div>
+            <h3 class="skill-title">Enterprise Security & Compliance</h3>
+            <p class="skill-desc">OAuth 2.0, OpenID Connect, HIPAA healthcare privacy, FHIR interoperability, PCI-DSS payment compliance, and SOX regulatory adherence.</p>
+          </div>
+          <div>
+            <div class="skill-bar-outer"><div class="skill-bar-inner" style="width: 94%;"></div></div>
+            <div class="skill-tags">
+              <span class="skill-tag-pill">OAuth 2.0 / SSO</span>
+              <span class="skill-tag-pill">HIPAA & FHIR</span>
+              <span class="skill-tag-pill">PCI-DSS</span>
+              <span class="skill-tag-pill">Role-Based RBAC</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skill 12 -->
+        <div class="skill-card" data-category="dotnet">
+          <div>
+            <div class="skill-card-top">
+              <div class="skill-icon-wrap">🤖</div>
+              <span class="skill-badge">MODERN</span>
+            </div>
+            <h3 class="skill-title">AI Copilot & Cross-Platform</h3>
+            <p class="skill-desc">Microsoft Copilot agent backend integrations, AI-assisted development workflows, and .NET MAUI iOS cross-platform mobile apps.</p>
+          </div>
+          <div>
+            <div class="skill-bar-outer"><div class="skill-bar-inner" style="width: 88%;"></div></div>
+            <div class="skill-tags">
+              <span class="skill-tag-pill">Microsoft Copilot</span>
+              <span class="skill-tag-pill">.NET MAUI (iOS)</span>
+              <span class="skill-tag-pill">Power BI</span>
+              <span class="skill-tag-pill">Microservices</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFESSIONAL EXPERIENCE TIMELINE -->
+  <section class="section" id="experience">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Career Trajectory</span>
+        <h2 class="section-title">Professional Experience</h2>
+        <p class="section-subtitle">
+          Over a decade delivering enterprise-grade engineering solutions across healthcare, education, tech giants, and financial corporations.
+        </p>
+      </div>
+
+      <div class="timeline-container">
+        <!-- Job 1: CVS Health -->
+        <div class="timeline-item">
+          <div class="timeline-node"></div>
+          <div class="timeline-card">
+            <div class="exp-header">
+              <div class="exp-company-group">
+                <div class="company-logo-badge">CVS</div>
+                <div>
+                  <h3 class="exp-role-title">Senior .NET Full Stack Developer</h3>
+                  <div class="exp-company-name">AETNA / CVS Health • Texas</div>
+                </div>
+              </div>
+              <span class="exp-date-badge">July 2025 - Present</span>
+            </div>
+
+            <p class="exp-summary-text">
+              Spearheading the modernization of enterprise healthcare systems handling patient care, EHR platforms, and prescription workflows using .NET 10, React, Blazor, and AWS event-driven services.
+            </p>
+
+            <ul class="exp-bullets">
+              <li>Modernized core enterprise healthcare microservices from .NET 8 to .NET 10, refactoring NuGet packages, ensuring backward compatibility, and slashing API latency by 45%.</li>
+              <li>Engineered event-driven decoupled pipelines utilizing AWS Lambda, Amazon EventBridge, SQS, DynamoDB, and SQL Server 2022.</li>
+              <li>Implemented FHIR-compliant healthcare endpoints supporting Patient, MedicationRequest, Observation, Encounter, and Immunization resources under strict HIPAA standards.</li>
+              <li>Architected backend services and APIs powering Microsoft Copilot AI agents, bridging enterprise healthcare data to automated AI query workflows.</li>
+              <li>Developed cross-platform .NET MAUI iOS applications utilizing push notifications, silent background updates, and deep linking under MVVM architecture.</li>
+              <li>Built real-time user notification engines with SignalR, Redis caching, and automated Azure DevOps CI/CD deployment pipelines.</li>
+            </ul>
+
+            <div class="exp-tech-tags">
+              <span class="exp-tag">.NET 10</span>
+              <span class="exp-tag">C#</span>
+              <span class="exp-tag">React.js</span>
+              <span class="exp-tag">Blazor</span>
+              <span class="exp-tag">AWS Lambda</span>
+              <span class="exp-tag">EventBridge</span>
+              <span class="exp-tag">FHIR / HIPAA</span>
+              <span class="exp-tag">Microsoft Copilot</span>
+              <span class="exp-tag">.NET MAUI</span>
+              <span class="exp-tag">SQL Server 2022</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 2: LACOE -->
+        <div class="timeline-item">
+          <div class="timeline-node"></div>
+          <div class="timeline-card">
+            <div class="exp-header">
+              <div class="exp-company-group">
+                <div class="company-logo-badge">LA</div>
+                <div>
+                  <h3 class="exp-role-title">Senior .NET Full Stack Developer</h3>
+                  <div class="exp-company-name">Los Angeles County Office of Education (LACOE) • Downey, CA</div>
+                </div>
+              </div>
+              <span class="exp-date-badge">Jan 2022 - July 2025</span>
+            </div>
+
+            <p class="exp-summary-text">
+              Architected statewide K-12 public-sector education platforms supporting countywide operations, district interoperability, and multi-department data security.
+            </p>
+
+            <ul class="exp-bullets">
+              <li>Developed full-stack web applications and microservices using C#, ASP.NET Core, Angular 8/18/19, React, and Blazor WebAssembly.</li>
+              <li>Engineered the core Data Exchange Layer in ASP.NET Core to exchange, validate, and process high-volume IFC sign data across LACOE school departments.</li>
+              <li>Secured enterprise REST APIs with OAuth 2.0, Single Sign-On (SSO), and role-based access control (RBAC).</li>
+              <li>Optimized SQL Server 2019 execution plans, stored procedures, and created analytical executive dashboards in Power BI and SSRS.</li>
+              <li>Configured automated container builds, CI/CD pipelines, and microservice deployments on Azure Kubernetes Service (AKS) with RabbitMQ.</li>
+            </ul>
+
+            <div class="exp-tech-tags">
+              <span class="exp-tag">ASP.NET Core</span>
+              <span class="exp-tag">Angular 19</span>
+              <span class="exp-tag">Blazor WASM</span>
+              <span class="exp-tag">AKS (Kubernetes)</span>
+              <span class="exp-tag">RabbitMQ</span>
+              <span class="exp-tag">OAuth 2.0 / SSO</span>
+              <span class="exp-tag">Power BI</span>
+              <span class="exp-tag">SQL Server 2019</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 3: Microsoft -->
+        <div class="timeline-item">
+          <div class="timeline-node"></div>
+          <div class="timeline-card">
+            <div class="exp-header">
+              <div class="exp-company-group">
+                <div class="company-logo-badge">MS</div>
+                <div>
+                  <h3 class="exp-role-title">Sr .NET Developer</h3>
+                  <div class="exp-company-name">Microsoft Corporation • Redmond, WA (Purview / Substrate)</div>
+                </div>
+              </div>
+              <span class="exp-date-badge">Aug 2020 - Jan 2022</span>
+            </div>
+
+            <p class="exp-summary-text">
+              Contributed to core cloud infrastructure running across Microsoft 365, including Exchange Online Outbound Throttling, Flighting Platform, Data Classification Service (DCS), and MS Approvals.
+            </p>
+
+            <ul class="exp-bullets">
+              <li>Engineered the MS Exchange Throttling Service on Exchange Online (EXO) servers, enforcing dynamic mailbox quotas (10k default limit) and runtime policy overrides.</li>
+              <li>Contributed to the enterprise Flighting Platform for gradual feature flag rollouts, canary deployments, and instant safe rollbacks across Windows & M365.</li>
+              <li>Enhanced Microsoft Purview Data Classification Service (DCS) for cloud-scale sensitive data inspection and Data Loss Prevention (DLP).</li>
+              <li>Architected cloud-native services using Azure Functions, Azure Service Bus, Azure Redis Cache, Azure Application Gateway, and Entity Framework Core.</li>
+              <li>Implemented SignalR for live notification pushes within the MS Approvals platform, supporting bulk approvals and actionable email history.</li>
+            </ul>
+
+            <div class="exp-tech-tags">
+              <span class="exp-tag">C# .NET</span>
+              <span class="exp-tag">Microsoft Purview</span>
+              <span class="exp-tag">Azure Service Bus</span>
+              <span class="exp-tag">Azure Redis</span>
+              <span class="exp-tag">SignalR</span>
+              <span class="exp-tag">EF Core</span>
+              <span class="exp-tag">Flighting Platform</span>
+              <span class="exp-tag">xUnit</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 4: Nationwide -->
+        <div class="timeline-item">
+          <div class="timeline-node"></div>
+          <div class="timeline-card">
+            <div class="exp-header">
+              <div class="exp-company-group">
+                <div class="company-logo-badge">NW</div>
+                <div>
+                  <h3 class="exp-role-title">.NET Core Windows Application Developer</h3>
+                  <div class="exp-company-name">Nationwide Pet Insurance • Los Angeles, CA</div>
+                </div>
+              </div>
+              <span class="exp-date-badge">July 2019 - Aug 2020</span>
+            </div>
+
+            <p class="exp-summary-text">
+              Engineered enterprise quotation, policy purchase, and payment gateway systems integrated with major corporate discount partners like Amazon and Home Depot.
+            </p>
+
+            <ul class="exp-bullets">
+              <li>Built customer-facing insurance enrollment SPAs with Angular 7/8, React, and ASP.NET Core Web APIs.</li>
+              <li>Developed microservices on Azure Service Fabric platform to sync financial and policy data from external sources.</li>
+              <li>Implemented role-based authorization with ASP.NET Identity and OAuth 2.0 tokens for PCI-safe transactions.</li>
+            </ul>
+
+            <div class="exp-tech-tags">
+              <span class="exp-tag">.NET Core</span>
+              <span class="exp-tag">Service Fabric</span>
+              <span class="exp-tag">Angular 8</span>
+              <span class="exp-tag">React</span>
+              <span class="exp-tag">OAuth 2.0</span>
+              <span class="exp-tag">Azure DevOps</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 5: eBay -->
+        <div class="timeline-item">
+          <div class="timeline-node"></div>
+          <div class="timeline-card">
+            <div class="exp-header">
+              <div class="exp-company-group">
+                <div class="company-logo-badge">EB</div>
+                <div>
+                  <h3 class="exp-role-title">Sr .NET Developer</h3>
+                  <div class="exp-company-name">eBay Inc. • Draper, UT</div>
+                </div>
+              </div>
+              <span class="exp-date-badge">Feb 2019 - July 2019</span>
+            </div>
+
+            <p class="exp-summary-text">
+              Developed digital document security systems (DSPM) adhering to strict PCI/SOX compliance standards for user information and financial card transactions.
+            </p>
+
+            <ul class="exp-bullets">
+              <li>Created interactive ASP.NET MVC5 views and SPAs using Angular, jQuery, and Kendo UI Grids with server-side paging.</li>
+              <li>Designed and consumed WCF & RESTful web services with XML/JSON data interchange.</li>
+              <li>Tuned high-volume SQL Server 2012 stored procedures, triggers, and SSRS reports.</li>
+            </ul>
+
+            <div class="exp-tech-tags">
+              <span class="exp-tag">ASP.NET MVC5</span>
+              <span class="exp-tag">C#</span>
+              <span class="exp-tag">Kendo UI</span>
+              <span class="exp-tag">PCI / SOX</span>
+              <span class="exp-tag">SQL Server 2012</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 6: Progressive -->
+        <div class="timeline-item">
+          <div class="timeline-node"></div>
+          <div class="timeline-card">
+            <div class="exp-header">
+              <div class="exp-company-group">
+                <div class="company-logo-badge">PG</div>
+                <div>
+                  <h3 class="exp-role-title">Senior Dot Net Developer</h3>
+                  <div class="exp-company-name">Progressive Insurance • Cleveland, OH</div>
+                </div>
+              </div>
+              <span class="exp-date-badge">Apr 2018 - Feb 2019</span>
+            </div>
+
+            <p class="exp-summary-text">
+              Engineered Special Line Internet Quote (SLIQ) application handling motorcycle, boat, and motorhome online insurance underwriting.
+            </p>
+
+            <ul class="exp-bullets">
+              <li>Developed MVC4 presentation and controller business logic with C# and Entity Framework.</li>
+              <li>Built WCF Data services consumed by multi-tier insurance quote and billing systems.</li>
+            </ul>
+
+            <div class="exp-tech-tags">
+              <span class="exp-tag">ASP.NET MVC4</span>
+              <span class="exp-tag">C#</span>
+              <span class="exp-tag">WCF</span>
+              <span class="exp-tag">Entity Framework</span>
+              <span class="exp-tag">Azure Storage</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 7: Bartronics -->
+        <div class="timeline-item">
+          <div class="timeline-node"></div>
+          <div class="timeline-card">
+            <div class="exp-header">
+              <div class="exp-company-group">
+                <div class="company-logo-badge">BT</div>
+                <div>
+                  <h3 class="exp-role-title">Software Engineer / .NET Developer</h3>
+                  <div class="exp-company-name">Bartronics India Limited • India</div>
+                </div>
+              </div>
+              <span class="exp-date-badge">Feb 2013 - Aug 2015</span>
+            </div>
+
+            <p class="exp-summary-text">
+              Developed banking Online Transaction Systems and governmental tax/wage reconciliation applications for the Department of Labor.
+            </p>
+
+            <ul class="exp-bullets">
+              <li>Implemented banking transaction workflows, account balance inquiries, and automated bill payment gateways.</li>
+              <li>Developed REST APIs, single-page application views, and SQL database stored procedures.</li>
+            </ul>
+
+            <div class="exp-tech-tags">
+              <span class="exp-tag">.NET 4.0</span>
+              <span class="exp-tag">C#</span>
+              <span class="exp-tag">ASP.NET MVC</span>
+              <span class="exp-tag">SQL Server 2012</span>
+              <span class="exp-tag">REST APIs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PROJECTS & CASE STUDIES -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Flagship Initiatives</span>
+        <h2 class="section-title">Enterprise Case Studies</h2>
+        <p class="section-subtitle">
+          Real-world architectural challenges solved across healthcare, high-scale cloud platforms, and public-sector operations.
+        </p>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card">
+          <div class="project-banner">
+            <div class="project-banner-pattern"></div>
+            <div class="project-banner-icon">🏥</div>
+            <div class="project-client-badge badge">CVS Health</div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Healthcare Modernization & AI Copilot</h3>
+            <p class="project-desc">
+              Transitioned mission-critical healthcare monoliths into decoupled .NET 10 microservices with AWS EventBridge event bus, FHIR clinical interoperability, and AI Copilot assistance.
+            </p>
+            <div class="project-highlights-grid">
+              <div class="project-hl-item">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>.NET 10 Upgrade</span>
+              </div>
+              <div class="project-hl-item">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>FHIR & HIPAA</span>
+              </div>
+              <div class="project-hl-item">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>AWS EventBridge</span>
+              </div>
+              <div class="project-hl-item">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Copilot AI Agents</span>
+              </div>
+            </div>
+            <div class="project-footer">
+              <span class="badge" style="font-size: 0.75rem;">July 2025 - Present</span>
+              <button class="btn btn-secondary btn-sm" data-open-modal="cvs">
+                <span>View Architecture Case</span>
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+          <div class="project-banner">
+            <div class="project-banner-pattern"></div>
+            <div class="project-banner-icon">🛡️</div>
+            <div class="project-client-badge badge">Microsoft</div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Purview DCS & Flighting Platform</h3>
+            <p class="project-desc">
+              Engineered high-throughput cloud services across Microsoft 365 Substrate, managing feature flag experimentation cohorts and real-time DLP data classification.
+            </p>
+            <div class="project-highlights-grid">
+              <div class="project-hl-item">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Substrate Scale</span>
+              </div>
+              <div class="project-hl-item">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Feature Flags</span>
+              </div>
+              <div class="project-hl-item">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>EXO Throttling</span>
+              </div>
+              <div class="project-hl-item">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Azure Redis & Bus</span>
+              </div>
+            </div>
+            <div class="project-footer">
+              <span class="badge" style="font-size: 0.75rem;">M365 Enterprise</span>
+              <button class="btn btn-secondary btn-sm" data-open-modal="microsoft">
+                <span>View Architecture Case</span>
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card">
+          <div class="project-banner">
+            <div class="project-banner-pattern"></div>
+            <div class="project-banner-icon">🎓</div>
+            <div class="project-client-badge badge">LACOE</div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Statewide K-12 Data Exchange Layer</h3>
+            <p class="project-desc">
+              Unified disparate county educational systems with a high-throughput ASP.NET Core ingestion pipeline, RabbitMQ messaging, and Blazor WebAssembly / Angular 19 portals.
+            </p>
+            <div class="project-highlights-grid">
+              <div class="project-hl-item">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Angular 19 + Blazor</span>
+              </div>
+              <div class="project-hl-item">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>OAuth 2.0 / SSO</span>
+              </div>
+              <div class="project-hl-item">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>RabbitMQ & AKS</span>
+              </div>
+              <div class="project-hl-item">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Power BI Reports</span>
+              </div>
+            </div>
+            <div class="project-footer">
+              <span class="badge" style="font-size: 0.75rem;">Public Sector K-12</span>
+              <button class="btn btn-secondary btn-sm" data-open-modal="lacoe">
+                <span>View Architecture Case</span>
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card">
+          <div class="project-banner">
+            <div class="project-banner-pattern"></div>
+            <div class="project-banner-icon">🐾</div>
+            <div class="project-client-badge badge">Nationwide</div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">Insurance Quotation & Policy Engine</h3>
+            <p class="project-desc">
+              Engineered responsive insurance enrollment and quotation portals with automated corporate partner reward programs and PCI-compliant financial transaction gateways.
+            </p>
+            <div class="project-highlights-grid">
+              <div class="project-hl-item">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Service Fabric</span>
+              </div>
+              <div class="project-hl-item">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Payment Gateways</span>
+              </div>
+              <div class="project-hl-item">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Single Page Apps</span>
+              </div>
+              <div class="project-hl-item">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Automated CI/CD</span>
+              </div>
+            </div>
+            <div class="project-footer">
+              <span class="badge" style="font-size: 0.75rem;">InsurTech</span>
+              <button class="btn btn-secondary btn-sm" data-open-modal="nationwide">
+                <span>View Architecture Case</span>
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="project-card">
+          <div class="project-banner">
+            <div class="project-banner-pattern"></div>
+            <div class="project-banner-icon">💳</div>
+            <div class="project-client-badge badge">eBay Inc.</div>
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">DSPM & PCI-DSS Financial Compliance</h3>
+            <p class="project-desc">
+              Built critical enterprise data and digital document processing systems complying with Tier 1 PCI and Sarbanes-Oxley (SOX) regulatory benchmarks.
+            </p>
+            <div class="project-highlights-grid">
+              <div class="project-hl-item">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>PCI / SOX Audits</span>
+              </div>
+              <div class="project-hl-item">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Kendo UI Grid</span>
+              </div>
+              <div class="project-hl-item">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>T-SQL Query Tuning</span>
+              </div>
+              <div class="project-hl-item">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>WCF & RESTful APIs</span>
+              </div>
+            </div>
+            <div class="project-footer">
+              <span class="badge" style="font-size: 0.75rem;">FinTech & E-Com</span>
+              <button class="btn btn-secondary btn-sm" data-open-modal="ebay">
+                <span>View Architecture Case</span>
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION & CREDENTIALS -->
+  <section class="section" id="education">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Academic Foundation</span>
+        <h2 class="section-title">Education & Credentials</h2>
+        <p class="section-subtitle">
+          Advanced computer science and management credentials backing a decade of hands-on delivery.
+        </p>
+      </div>
+
+      <div class="edu-grid">
+        <div class="edu-card">
+          <div class="edu-icon-wrap">🎓</div>
+          <div>
+            <h4>Master's Degree</h4>
+            <p>California University of Management and Science</p>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Los Angeles, California, USA</p>
+            <span class="edu-year">Graduated 2017</span>
+          </div>
+        </div>
+
+        <div class="edu-card">
+          <div class="edu-icon-wrap">🏛️</div>
+          <div>
+            <h4>Bachelor of Engineering</h4>
+            <p>Computer Science & Engineering</p>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">India</p>
+            <span class="edu-year">Graduated 2013</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <p>© 2026 Rama Devi. Senior .NET Full Stack Developer.</p>
+        <p style="font-size: 0.775rem; margin-top: 0.2rem;">Engineered with clean HTML5, CSS3 & JavaScript. Optimized for performance and accessibility.</p>
+      </div>
+
+      <div class="footer-nav">
+        <a href="#about">About</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CASE STUDY DETAILS MODAL -->
+  <div class="modal-overlay" id="case-study-modal">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close modal">✕</button>
+      <div id="modal-dynamic-content">
+        <!-- Content injected dynamically via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="toast-notification">
+    <svg width="18" height="18" fill="none" stroke="#22c55e" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+    <span id="toast-text">Notification message</span>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
