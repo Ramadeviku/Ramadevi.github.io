@@ -15,9 +15,11 @@
 </head>
 <body>
 
-  <!-- Ambient Glows -->
-  <div class="ambient-glow" style="top: -100px; left: -100px;"></div>
-  <div class="ambient-glow" style="bottom: 15%; right: -150px; background: radial-gradient(circle, var(--accent-secondary) 0%, transparent 70%);"></div>
+  <!-- Ambient Glows (Overflow-Safe) -->
+  <div style="position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0;">
+    <div class="ambient-glow" style="top: -100px; left: -100px;"></div>
+    <div class="ambient-glow" style="bottom: 15%; right: -150px; background: radial-gradient(circle, var(--accent-secondary) 0%, transparent 70%);"></div>
+  </div>
 
   <!-- LIVE HUD TELEMETRY BAR -->
   <div class="hud-bar">
