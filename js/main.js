@@ -945,7 +945,8 @@ function initNavScroll() {
   });
 
   if (mobileToggle && navLinks) {
-    mobileToggle.addEventListener('click', () => {
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
       navLinks.classList.toggle('open');
       playUiSound('click');
     });
@@ -954,6 +955,12 @@ function initNavScroll() {
       l.addEventListener('click', () => {
         navLinks.classList.remove('open');
       });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (navLinks.classList.contains('open') && !navLinks.contains(e.target) && e.target !== mobileToggle) {
+        navLinks.classList.remove('open');
+      }
     });
   }
 }
