@@ -1,6 +1,6 @@
 /**
- * Rama Devi - Senior .NET Full Stack Developer Portfolio
- * Interactive Modern UI Engine
+ * Rama Devi - Senior .NET Full Stack Developer & Cloud Architect
+ * High-Interactivity Mission Control Engine
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,17 +8,18 @@ document.addEventListener('DOMContentLoaded', () => {
   initTypingEffect();
   initThemeSwitcher();
   initSoundEffects();
-  initNavScroll();
-  initArchTabs();
+  init3DCardTilt();
+  initHeroSparkline();
+  initArchitectureSimulator();
+  initApiTestBench();
   initSkillsFilter();
   initModals();
-  initTerminal();
-  initContactForm();
   initClipboard();
+  initNavScroll();
 });
 
 /* ==========================================================================
-   1. INTERACTIVE PARTICLE CANVAS
+   1. PARTICLE MESH CANVAS (Interactive Starfield / Network)
    ========================================================================== */
 function initParticleCanvas() {
   const canvas = document.getElementById('particle-canvas');
@@ -26,7 +27,7 @@ function initParticleCanvas() {
   const ctx = canvas.getContext('2d');
   let width, height;
   let particles = [];
-  const mouse = { x: null, y: null, radius: 150 };
+  const mouse = { x: null, y: null, radius: 160 };
 
   function resize() {
     width = canvas.width = window.innerWidth;
@@ -36,8 +37,8 @@ function initParticleCanvas() {
   window.addEventListener('resize', resize);
 
   window.addEventListener('mousemove', (e) => {
-    mouse.x = e.x;
-    mouse.y = e.y;
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
   });
 
   window.addEventListener('mouseout', () => {
@@ -50,15 +51,14 @@ function initParticleCanvas() {
       this.x = Math.random() * width;
       this.y = Math.random() * height;
       this.size = Math.random() * 2 + 1;
-      this.baseX = this.x;
-      this.baseY = this.y;
-      this.density = (Math.random() * 30) + 1;
       this.vx = (Math.random() - 0.5) * 0.7;
       this.vy = (Math.random() - 0.5) * 0.7;
+      this.density = (Math.random() * 30) + 1;
     }
 
     draw() {
-      ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--accent') || '#00f2fe';
+      const accent = getComputedStyle(document.body).getPropertyValue('--accent') || '#00f2fe';
+      ctx.fillStyle = accent;
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
       ctx.closePath();
@@ -72,27 +72,21 @@ function initParticleCanvas() {
       if (this.x < 0 || this.x > width) this.vx = -this.vx;
       if (this.y < 0 || this.y > height) this.vy = -this.vy;
 
-      // Mouse interaction
       if (mouse.x !== null) {
         const dx = mouse.x - this.x;
         const dy = mouse.y - this.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        if (distance < mouse.radius) {
-          const forceDirectionX = dx / distance;
-          const forceDirectionY = dy / distance;
-          const maxDistance = mouse.radius;
-          const force = (maxDistance - distance) / maxDistance;
-          const directionX = forceDirectionX * force * this.density;
-          const directionY = forceDirectionY * force * this.density;
-          this.x -= directionX;
-          this.y -= directionY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < mouse.radius) {
+          const force = (mouse.radius - dist) / mouse.radius;
+          this.x -= (dx / dist) * force * this.density * 0.4;
+          this.y -= (dy / dist) * force * this.density * 0.4;
         }
       }
     }
   }
 
-  const particleCount = Math.min(Math.floor(window.innerWidth / 15), 75);
-  for (let i = 0; i < particleCount; i++) {
+  const count = Math.min(Math.floor(window.innerWidth / 16), 75);
+  for (let i = 0; i < count; i++) {
     particles.push(new Particle());
   }
 
@@ -101,9 +95,9 @@ function initParticleCanvas() {
       for (let b = a + 1; b < particles.length; b++) {
         const dx = particles[a].x - particles[b].x;
         const dy = particles[a].y - particles[b].y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        if (distance < 130) {
-          const opacity = (1 - distance / 130) * 0.22;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 130) {
+          const opacity = (1 - dist / 130) * 0.22;
           ctx.strokeStyle = `rgba(0, 242, 254, ${opacity})`;
           ctx.lineWidth = 1;
           ctx.beginPath();
@@ -142,77 +136,76 @@ function initTypingEffect() {
     'Modern React & Blazor UI Engineer'
   ];
 
-  let roleIndex = 0;
-  let charIndex = 0;
+  let roleIdx = 0;
+  let charIdx = 0;
   let isDeleting = false;
-  let typingSpeed = 90;
+  let speed = 90;
 
   function type() {
-    const currentRole = roles[roleIndex];
+    const role = roles[roleIdx];
     if (isDeleting) {
-      typingEl.textContent = currentRole.substring(0, charIndex - 1);
-      charIndex--;
-      typingSpeed = 45;
+      typingEl.textContent = role.substring(0, charIdx - 1);
+      charIdx--;
+      speed = 45;
     } else {
-      typingEl.textContent = currentRole.substring(0, charIndex + 1);
-      charIndex++;
-      typingSpeed = 90;
+      typingEl.textContent = role.substring(0, charIdx + 1);
+      charIdx++;
+      speed = 90;
     }
 
-    if (!isDeleting && charIndex === currentRole.length) {
+    if (!isDeleting && charIdx === role.length) {
       isDeleting = true;
-      typingSpeed = 2000; // Pause at end
-    } else if (isDeleting && charIndex === 0) {
+      speed = 2200;
+    } else if (isDeleting && charIdx === 0) {
       isDeleting = false;
-      roleIndex = (roleIndex + 1) % roles.length;
-      typingSpeed = 400; // Pause before typing next
+      roleIdx = (roleIdx + 1) % roles.length;
+      speed = 400;
     }
 
-    setTimeout(type, typingSpeed);
+    setTimeout(type, speed);
   }
 
   type();
 }
 
 /* ==========================================================================
-   3. THEME ACCENT SWITCHER
+   3. THEME SWITCHER
    ========================================================================== */
 function initThemeSwitcher() {
-  const themeDots = document.querySelectorAll('.theme-dot');
-  const savedTheme = localStorage.getItem('rama-portfolio-theme') || 'cyan';
-  setTheme(savedTheme);
+  const dots = document.querySelectorAll('.theme-dot');
+  const saved = localStorage.getItem('rama-theme') || 'cyan';
+  setTheme(saved);
 
-  themeDots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      const theme = dot.getAttribute('data-theme');
-      setTheme(theme);
+  dots.forEach(d => {
+    d.addEventListener('click', () => {
+      const t = d.getAttribute('data-theme');
+      setTheme(t);
       playUiSound('click');
     });
   });
 
-  function setTheme(theme) {
-    if (theme === 'cyan') {
+  function setTheme(t) {
+    if (t === 'cyan') {
       document.body.removeAttribute('data-theme');
     } else {
-      document.body.setAttribute('data-theme', theme);
+      document.body.setAttribute('data-theme', t);
     }
-    localStorage.setItem('rama-portfolio-theme', theme);
+    localStorage.setItem('rama-theme', t);
   }
 }
 
 /* ==========================================================================
-   4. WEB AUDIO SYNTHESIZED SOUND EFFECTS (Subtle Sci-Fi Feedback)
+   4. WEB AUDIO SYNTHESIZED SOUND EFFECTS
    ========================================================================== */
 let audioCtx = null;
 let soundEnabled = true;
 
 function initSoundEffects() {
-  const soundToggleBtn = document.getElementById('sound-toggle-btn');
-
-  if (soundToggleBtn) {
-    soundToggleBtn.addEventListener('click', () => {
+  const btn = document.getElementById('sound-toggle-btn');
+  if (btn) {
+    btn.addEventListener('click', () => {
       soundEnabled = !soundEnabled;
-      soundToggleBtn.innerHTML = soundEnabled 
+      btn.innerHTML = soundEnabled 
         ? `<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"/></svg>`
         : `<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>`;
       showToast(soundEnabled ? 'Audio Feedback Enabled' : 'Audio Feedback Muted');
@@ -230,111 +223,503 @@ function playUiSound(type = 'click') {
       audioCtx.resume();
     }
 
+    const now = audioCtx.currentTime;
     const osc = audioCtx.createOscillator();
     const gain = audioCtx.createGain();
     osc.connect(gain);
     gain.connect(audioCtx.destination);
 
-    const now = audioCtx.currentTime;
     if (type === 'click') {
       osc.type = 'sine';
-      osc.frequency.setValueAtTime(580, now);
-      osc.frequency.exponentialRampToValueAtTime(880, now + 0.05);
+      osc.frequency.setValueAtTime(620, now);
+      osc.frequency.exponentialRampToValueAtTime(880, now + 0.04);
       gain.gain.setValueAtTime(0.04, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
       osc.start(now);
-      osc.stop(now + 0.05);
-    } else if (type === 'success') {
+      osc.stop(now + 0.04);
+    } else if (type === 'dispatch') {
       osc.type = 'triangle';
-      osc.frequency.setValueAtTime(440, now);
-      osc.frequency.exponentialRampToValueAtTime(880, now + 0.15);
+      osc.frequency.setValueAtTime(220, now);
+      osc.frequency.exponentialRampToValueAtTime(940, now + 0.22);
+      gain.gain.setValueAtTime(0.06, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
+      osc.start(now);
+      osc.stop(now + 0.22);
+    } else if (type === 'success') {
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(520, now);
+      osc.frequency.exponentialRampToValueAtTime(1040, now + 0.15);
       gain.gain.setValueAtTime(0.05, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
       osc.start(now);
       osc.stop(now + 0.15);
     }
-  } catch (e) {
-    // Audio context silently ignored if blocked by autoplay policy
-  }
+  } catch (e) {}
 }
 
 /* ==========================================================================
-   5. NAVIGATION & SCROLL SPY
+   5. 3D CARD TILT PHYSICS (Hero Visual Card)
    ========================================================================== */
-function initNavScroll() {
-  const nav = document.querySelector('.nav-container');
-  const mobileToggle = document.getElementById('mobile-toggle');
-  const navLinks = document.querySelector('.nav-links');
-  const links = document.querySelectorAll('.nav-link');
-  const sections = document.querySelectorAll('section[id]');
+function init3DCardTilt() {
+  const card = document.querySelector('.hero-visual-card');
+  if (!card) return;
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      nav.style.boxShadow = '0 12px 35px rgba(0, 0, 0, 0.7)';
-      nav.style.borderColor = 'rgba(255, 255, 255, 0.18)';
-    } else {
-      nav.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.5)';
-      nav.style.borderColor = 'var(--border-highlight)';
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = ((y - centerY) / centerY) * -9;
+    const rotateY = ((x - centerX) / centerX) * 9;
+
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+  });
+
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
+  });
+}
+
+/* ==========================================================================
+   6. HERO LIVE TELEMETRY SPARKLINE
+   ========================================================================== */
+function initHeroSparkline() {
+  const canvas = document.getElementById('hero-sparkline-canvas');
+  const valEl = document.getElementById('hero-sparkline-val');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  canvas.width = 140;
+  canvas.height = 35;
+
+  let points = [12, 16, 14, 22, 19, 28, 24, 30, 26, 32, 29, 35, 31, 38, 34];
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.strokeStyle = '#22c55e';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+
+    const step = canvas.width / (points.length - 1);
+    for (let i = 0; i < points.length; i++) {
+      const x = i * step;
+      const y = canvas.height - (points[i] / 50) * canvas.height;
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
     }
+    ctx.stroke();
 
-    // Scroll spy
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 140;
-      if (window.scrollY >= sectionTop) {
-        current = section.getAttribute('id');
-      }
-    });
-
-    links.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
-      }
-    });
-  });
-
-  if (mobileToggle && navLinks) {
-    mobileToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-      playUiSound('click');
-    });
-
-    links.forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        playUiSound('click');
-      });
-    });
+    // Fill gradient
+    ctx.lineTo(canvas.width, canvas.height);
+    ctx.lineTo(0, canvas.height);
+    ctx.closePath();
+    const grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+    grad.addColorStop(0, 'rgba(34, 197, 94, 0.25)');
+    grad.addColorStop(1, 'transparent');
+    ctx.fillStyle = grad;
+    ctx.fill();
   }
+
+  setInterval(() => {
+    const next = Math.max(15, Math.min(48, points[points.length - 1] + (Math.random() - 0.48) * 8));
+    points.shift();
+    points.push(next);
+    draw();
+    if (valEl) {
+      valEl.textContent = `${Math.round(next * 120)} req/s`;
+    }
+  }, 450);
+
+  draw();
 }
 
 /* ==========================================================================
-   6. ARCHITECTURE SHOWCASE TABS
+   7. INTERACTIVE ARCHITECTURE SIMULATOR & PIPELINE DISPATCH
    ========================================================================== */
-function initArchTabs() {
-  const tabs = document.querySelectorAll('.arch-tab-btn');
-  const panels = document.querySelectorAll('.arch-content-panel');
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const target = tab.getAttribute('data-arch');
-
-      tabs.forEach(t => t.classList.remove('active'));
-      panels.forEach(p => p.classList.remove('active'));
-
-      tab.classList.add('active');
-      const activePanel = document.getElementById(`arch-${target}`);
-      if (activePanel) {
-        activePanel.classList.add('active');
+const architecturePipelines = {
+  cvs: {
+    title: 'CVS Health: Modern .NET 10 Event-Driven FHIR Pipeline',
+    description: 'High-throughput healthcare interoperability hub routing electronic health records and Microsoft Copilot AI agent workflows.',
+    nodes: [
+      {
+        id: 'node-ui',
+        name: 'React 18 & Blazor Frontends',
+        desc: 'Dynamic EHR forms, Copilot chat assistant, state management',
+        type: 'Presentation Layer',
+        latency: '8.4 ms',
+        throughput: '14,200 req/s',
+        protocol: 'HTTPS / WSS (SignalR)',
+        payload: '{\n  "clientId": "Aetna-Portal-Web",\n  "auth": "Bearer eyJhbGciOi...",\n  "intent": "GetPatientMedications"\n}',
+        resilience: 'Client-side circuit breaker with optimistic UI updates.'
+      },
+      {
+        id: 'node-gw',
+        name: '.NET 10 API Gateway & Hub',
+        desc: 'OAuth 2.0 validation, SignalR realtime broadcast, rate limiting',
+        type: 'Application Middleware',
+        latency: '3.1 ms',
+        throughput: '28,500 req/s',
+        protocol: 'gRPC / HTTP/2',
+        payload: '{\n  "resource": "MedicationRequest",\n  "fhirVersion": "R4",\n  "tenant": "CVS-Health-TX"\n}',
+        resilience: 'Distributed memory caching via Azure Redis & rate limit policies.'
+      },
+      {
+        id: 'node-bus',
+        name: 'AWS EventBridge & Lambda Engine',
+        desc: 'Loosely coupled event bus routing FHIR resource payloads',
+        type: 'Serverless Event Mesh',
+        latency: '11.8 ms',
+        throughput: '35,000 evt/s',
+        protocol: 'AWS EventBridge / SQS',
+        payload: '{\n  "source": "cvs.pharmacy.dispense",\n  "detailType": "MedicationFulfilled",\n  "status": "ReadyForPickup"\n}',
+        resilience: 'Dead-Letter Queues (DLQ) with automated retry backoff.'
+      },
+      {
+        id: 'node-db',
+        name: 'SQL Server 2022 + DynamoDB & AI Copilot',
+        desc: 'Sub-millisecond query execution, audit compliance & Copilot grounding',
+        type: 'Persistence & AI Layer',
+        latency: '4.6 ms',
+        throughput: '99.999% SLA',
+        protocol: 'T-SQL / DynamoDB Streams',
+        payload: '{\n  "patientId": "FHIR-84920",\n  "hipaaAuditLogged": true,\n  "copilotInferenceMs": 42\n}',
+        resilience: 'Multi-AZ replication, automated failover, HIPAA audit encryption.'
       }
-      playUiSound('click');
+    ]
+  },
+  microsoft: {
+    title: 'Microsoft: Purview DCS & Global Flighting Platform',
+    description: 'Enterprise scale feature flag experimentation cohorts and Exchange Online Outbound Throttling.',
+    nodes: [
+      {
+        id: 'node-dns',
+        name: 'Azure Application Gateway & Weighted DNS',
+        desc: 'Multi-region high availability traffic distribution across M365',
+        type: 'Edge & Ingress Layer',
+        latency: '2.8 ms',
+        throughput: '120,000 req/s',
+        protocol: 'Azure Weighted DNS / TLS 1.3',
+        payload: '{\n  "region": "WestUS-2",\n  "routingWeight": 0.85,\n  "targetCluster": "Substrate-Prod-A"\n}',
+        resilience: 'Multi-region geo-redundancy with automatic health probing.'
+      },
+      {
+        id: 'node-throttling',
+        name: 'Exchange Throttling & Flighting Engine',
+        desc: 'Dynamic runtime policy enforcement (10k email limits) and A/B rollouts',
+        type: 'Core Policy Service',
+        latency: '5.2 ms',
+        throughput: '85,000 req/s',
+        protocol: 'Internal RPC / .NET 8 Runtime',
+        payload: '{\n  "mailbox": "admin@enterprise.contoso.com",\n  "dailyQuota": 10000,\n  "flightingCohort": "BetaRing-3"\n}',
+        resilience: 'Real-time policy cache fallback & instant feature flag rollback.'
+      },
+      {
+        id: 'node-dcs',
+        name: 'Microsoft Purview DCS Engine',
+        desc: 'Real-time sensitive data inspection and Data Loss Prevention (DLP)',
+        type: 'Data Protection & Compliance',
+        latency: '14.1 ms',
+        throughput: '40,000 doc/s',
+        protocol: 'gRPC / Kafka / Solace',
+        payload: '{\n  "classificationType": "CreditCardNumber",\n  "confidence": 0.99,\n  "action": "AuditAndMask"\n}',
+        resilience: 'Asynchronous event stream buffering via RabbitMQ & Solace.'
+      },
+      {
+        id: 'node-redis',
+        name: 'Azure Redis Cache & SQL Managed Instance',
+        desc: 'Sub-millisecond policy caching and MS Approvals SignalR sync',
+        type: 'Persistence & Live Push',
+        latency: '1.9 ms',
+        throughput: '65,000 ops/s',
+        protocol: 'RESP / TDS SQL Protocol',
+        payload: '{\n  "approvalId": "MS-APP-93810",\n  "status": "BulkApproved",\n  "signalRSynced": true\n}',
+        resilience: 'Redis Cluster clustering with Sentinel automated master election.'
+      }
+    ]
+  },
+  lacoe: {
+    title: 'LACOE: Statewide K-12 Educational Data Exchange',
+    description: 'Centralized public-sector ingestion layer standardizing IFC sign data across 80+ school districts.',
+    nodes: [
+      {
+        id: 'node-lacoe-ui',
+        name: 'Angular 19 & Blazor Web Portals',
+        desc: 'District administrative portals with Kendo UI grids and SSO login',
+        type: 'Client Layer',
+        latency: '9.2 ms',
+        throughput: '8,000 req/s',
+        protocol: 'HTTPS / OAuth 2.0 PKCE',
+        payload: '{\n  "districtId": "LACOE-USD-42",\n  "userRole": "DistrictAdmin",\n  "ssoProvider": "AzureAD"\n}',
+        resilience: 'Token refresh interceptors with offline state caching.'
+      },
+      {
+        id: 'node-lacoe-api',
+        name: 'ASP.NET Core Data Exchange Layer',
+        desc: 'Schema validation and transformation of IFC sign data',
+        type: 'Ingestion Layer',
+        latency: '6.4 ms',
+        throughput: '18,000 req/s',
+        protocol: 'RESTful JSON / XML Web Services',
+        payload: '{\n  "batchId": "IFC-BATCH-2026",\n  "records": 4820,\n  "validationStatus": "SchemaPassed"\n}',
+        resilience: 'FluentValidation pipelines with structured logging to Azure Insights.'
+      },
+      {
+        id: 'node-lacoe-mq',
+        name: 'RabbitMQ Message Broker & AKS Pods',
+        desc: 'Asynchronous event distribution to containerized workers',
+        type: 'Messaging & Orchestration',
+        latency: '7.8 ms',
+        throughput: '22,000 msg/s',
+        protocol: 'AMQP 0-9-1',
+        payload: '{\n  "queue": "district.ifc.processing",\n  "workerPods": 6,\n  "retryAttempts": 0\n}',
+        resilience: 'Horizontal Pod Autoscaler (HPA) in Azure Kubernetes Service.'
+      },
+      {
+        id: 'node-lacoe-db',
+        name: 'SQL Server 2019 & Power BI Dashboards',
+        desc: 'Executive reporting models and real-time operational analytics',
+        type: 'Analytics & Data Store',
+        latency: '8.1 ms',
+        throughput: '100% Data Integrity',
+        protocol: 'T-SQL / Power BI Service',
+        payload: '{\n  "report": "StateComplianceSummary",\n  "districtsReporting": 82,\n  "executionPlanCost": 0.04\n}',
+        resilience: 'Daily automated database snapshots and disaster recovery failover.'
+      }
+    ]
+  }
+};
+
+let currentArchKey = 'cvs';
+let selectedNodeIdx = 0;
+
+function initArchitectureSimulator() {
+  const presetBtns = document.querySelectorAll('.sandbox-tab-btn');
+  const dispatchBtn = document.getElementById('sandbox-dispatch-btn');
+
+  presetBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.getAttribute('data-preset');
+      if (architecturePipelines[key]) {
+        currentArchKey = key;
+        selectedNodeIdx = 0;
+        presetBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderPipeline();
+        playUiSound('click');
+      }
     });
   });
+
+  if (dispatchBtn) {
+    dispatchBtn.addEventListener('click', runDispatchSimulation);
+  }
+
+  renderPipeline();
+}
+
+function renderPipeline() {
+  const data = architecturePipelines[currentArchKey];
+  const chainEl = document.getElementById('pipeline-nodes-chain');
+  const titleEl = document.getElementById('pipeline-active-title');
+  if (!chainEl) return;
+
+  if (titleEl) titleEl.textContent = data.title;
+
+  chainEl.innerHTML = '';
+  data.nodes.forEach((node, idx) => {
+    const nodeEl = document.createElement('div');
+    nodeEl.className = `interactive-node ${idx === selectedNodeIdx ? 'selected' : ''}`;
+    nodeEl.setAttribute('data-node-idx', idx);
+
+    nodeEl.innerHTML = `
+      <div class="node-left-meta">
+        <div class="node-icon-box">
+          ${idx === 0 ? '💻' : idx === 1 ? '⚡' : idx === 2 ? '☁️' : '🗄️'}
+        </div>
+        <div class="node-text-box">
+          <h4>${node.name}</h4>
+          <p>${node.desc}</p>
+        </div>
+      </div>
+      <div class="node-right-badge">${node.latency}</div>
+    `;
+
+    nodeEl.addEventListener('click', () => {
+      selectedNodeIdx = idx;
+      document.querySelectorAll('.interactive-node').forEach(n => n.classList.remove('selected'));
+      nodeEl.classList.add('selected');
+      updateInspector();
+      playUiSound('click');
+    });
+
+    chainEl.appendChild(nodeEl);
+
+    if (idx < data.nodes.length - 1) {
+      const conn = document.createElement('div');
+      conn.className = 'node-connector-line';
+      chainEl.appendChild(conn);
+    }
+  });
+
+  updateInspector();
+}
+
+function updateInspector() {
+  const data = architecturePipelines[currentArchKey];
+  const node = data.nodes[selectedNodeIdx];
+  if (!node) return;
+
+  const tagEl = document.getElementById('insp-node-type');
+  const titleEl = document.getElementById('insp-node-name');
+  const latEl = document.getElementById('insp-node-latency');
+  const thEl = document.getElementById('insp-node-throughput');
+  const protoEl = document.getElementById('insp-node-protocol');
+  const payloadEl = document.getElementById('insp-node-payload');
+  const noteEl = document.getElementById('insp-node-note');
+
+  if (tagEl) tagEl.textContent = node.type;
+  if (titleEl) titleEl.textContent = node.name;
+  if (latEl) latEl.textContent = node.latency;
+  if (thEl) thEl.textContent = node.throughput;
+  if (protoEl) protoEl.textContent = node.protocol;
+  if (payloadEl) payloadEl.textContent = node.payload;
+  if (noteEl) noteEl.textContent = node.resilience;
+}
+
+function runDispatchSimulation() {
+  const dispatchBtn = document.getElementById('sandbox-dispatch-btn');
+  const nodes = document.querySelectorAll('.interactive-node');
+  if (!dispatchBtn || nodes.length === 0) return;
+
+  dispatchBtn.disabled = true;
+  dispatchBtn.innerHTML = `<span>Simulating Traffic...</span>`;
+  playUiSound('dispatch');
+
+  let current = 0;
+  function step() {
+    if (current > 0) {
+      nodes[current - 1].classList.remove('selected');
+    }
+    if (current < nodes.length) {
+      nodes[current].classList.add('selected');
+      selectedNodeIdx = current;
+      updateInspector();
+      playUiSound('click');
+      current++;
+      setTimeout(step, 450);
+    } else {
+      setTimeout(() => {
+        dispatchBtn.disabled = false;
+        dispatchBtn.innerHTML = `
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <span>Dispatch Live Event</span>
+        `;
+        playUiSound('success');
+        showToast('Event successfully processed through architecture mesh!');
+      }, 300);
+    }
+  }
+
+  step();
 }
 
 /* ==========================================================================
-   7. SKILLS FILTER MATRIX
+   8. LIVE INTERACTIVE API TEST BENCH (MOCK SWAGGER)
+   ========================================================================== */
+const mockApiEndpoints = {
+  '/api/v10/healthcare/fhir/patient/CVS-9481': {
+    status: 200,
+    statusText: 'OK',
+    latency: '14 ms',
+    body: {
+      resourceType: "Patient",
+      id: "CVS-9481",
+      active: true,
+      name: [{ use: "official", family: "Reddy", given: ["Rama"] }],
+      telecom: [{ system: "email", value: "rkreddy313579@gmail.com" }, { system: "phone", value: "(840) 977-6552" }],
+      organization: "CVS Health / Aetna Enterprise",
+      fhirCompliance: "HL7 FHIR Release 4",
+      copilotInference: { status: "Active", agent: "HealthcarePrescriptionAdvisor" }
+    }
+  },
+  '/api/v10/security/dlp/classify-document': {
+    status: 200,
+    statusText: 'OK',
+    latency: '18 ms',
+    body: {
+      service: "Microsoft Purview Data Classification Service",
+      documentId: "DOC-M365-81729",
+      classificationResult: "Sensitive - Confidential Financial",
+      matchedPatterns: ["CreditCardNumber (Confidence 0.99)", "PCI-DSS SOX Tier 1"],
+      enforcementAction: "Encrypted & DLP Audit Transmitted to Substrate"
+    }
+  },
+  '/api/v10/education/exchange/districts/82': {
+    status: 200,
+    statusText: 'OK',
+    latency: '12 ms',
+    body: {
+      authority: "Los Angeles County Office of Education (LACOE)",
+      districtsReporting: 82,
+      activePortalTech: ["Angular 19", "Blazor WebAssembly", "ASP.NET Core"],
+      messageQueue: "RabbitMQ Cluster (AKS)",
+      dataIntegrityScore: "100.0%"
+    }
+  },
+  '/api/v10/throttling/evaluate-quota': {
+    status: 200,
+    statusText: 'OK',
+    latency: '9 ms',
+    body: {
+      service: "MS Exchange Online Throttling Service",
+      mailboxQuota: 10000,
+      currentDailyEmails: 4120,
+      quotaStatus: "Compliant",
+      flightingRing: "Production-Wave-2",
+      runtimePolicyEvaluatedIn: "3.2ms"
+    }
+  }
+};
+
+function initApiTestBench() {
+  const select = document.getElementById('api-endpoint-selector');
+  const sendBtn = document.getElementById('api-send-btn');
+  const statusEl = document.getElementById('api-status-display');
+  const latencyEl = document.getElementById('api-latency-display');
+  const bodyEl = document.getElementById('api-response-body');
+
+  if (!select || !sendBtn) return;
+
+  function executeApiCall() {
+    const ep = select.value;
+    const res = mockApiEndpoints[ep];
+    if (!res) return;
+
+    playUiSound('dispatch');
+    bodyEl.textContent = 'Executing asynchronous HTTP call...';
+    statusEl.textContent = 'Connecting...';
+    statusEl.style.color = 'var(--accent)';
+
+    setTimeout(() => {
+      statusEl.textContent = `${res.status} ${res.statusText}`;
+      statusEl.style.color = '#22c55e';
+      latencyEl.textContent = res.latency;
+      bodyEl.textContent = JSON.stringify(res.body, null, 2);
+      playUiSound('success');
+    }, 280);
+  }
+
+  sendBtn.addEventListener('click', executeApiCall);
+  select.addEventListener('change', executeApiCall);
+
+  executeApiCall();
+}
+
+/* ==========================================================================
+   9. SKILLS FILTER MATRIX
    ========================================================================== */
 function initSkillsFilter() {
   const filterBtns = document.querySelectorAll('.filter-btn');
@@ -370,7 +755,7 @@ function initSkillsFilter() {
 }
 
 /* ==========================================================================
-   8. CASE STUDY MODALS
+   10. CASE STUDY MODALS
    ========================================================================== */
 const projectDetailsData = {
   cvs: {
@@ -378,7 +763,7 @@ const projectDetailsData = {
     client: 'AETNA / CVS Health (Texas) • July 2025 - Present',
     tags: ['.NET 10', 'ASP.NET Core', 'AWS Lambda', 'EventBridge', 'FHIR / HIPAA', 'Microsoft Copilot', '.NET MAUI'],
     overview: 'Led the enterprise transformation of critical healthcare microservices and modern UI systems handling sensitive patient workflows, prescription fulfillment, and cross-organization integrations.',
-    challenge: 'Transition legacy .NET 8 monoliths and disparate services into decoupled .NET 10 microservices, adhere to strict HIPAA and FHIR interoperability standards, and wire up AI Copilot capabilities without downtime.',
+    challenge: 'Transition legacy .NET 8 monoliths into decoupled .NET 10 microservices, adhere to strict HIPAA and FHIR interoperability standards, and wire up AI Copilot capabilities without downtime.',
     solution: 'Designed event-driven pipelines utilizing Amazon EventBridge, AWS Lambda, S3, and DynamoDB alongside SQL Server. Upgraded application frameworks to .NET 10 with asynchronous caching, SignalR real-time event distribution, and Microsoft Copilot agent integration for automated clinical query handling. Built cross-platform mobile functionality via .NET MAUI.',
     metrics: [
       { label: 'Latency Reduction', val: '45%' },
@@ -512,217 +897,78 @@ function initModals() {
   });
 
   function closeModal() {
-    if (modalOverlay) {
-      modalOverlay.classList.remove('active');
-    }
+    if (modalOverlay) modalOverlay.classList.remove('active');
   }
 }
 
 /* ==========================================================================
-   9. INTERACTIVE DEVELOPER CLI TERMINAL
-   ========================================================================== */
-function initTerminal() {
-  const terminalInput = document.getElementById('terminal-cli-input');
-  const terminalOutput = document.getElementById('terminal-cli-output');
-  const quickBtns = document.querySelectorAll('.quick-cmd-btn');
-  if (!terminalInput || !terminalOutput) return;
-
-  const history = [];
-  let historyIdx = -1;
-
-  const commands = {
-    help: () => `
-<span class="terminal-line accent">Available Commands:</span>
-  <span class="accent">whoami</span>        - Display candidate summary & role
-  <span class="accent">skills</span>        - Technical skills matrix & competencies
-  <span class="accent">experience</span>    - Client work history (Microsoft, CVS Health, LACOE...)
-  <span class="accent">architecture</span>  - Enterprise design patterns & cloud stack
-  <span class="accent">contact</span>       - Phone, email, location & contact links
-  <span class="accent">download</span>      - Trigger PDF / Resume print preview
-  <span class="accent">stats</span>         - Key enterprise metrics & benchmarks
-  <span class="accent">clear</span>         - Clear terminal console screen
-    `,
-    whoami: () => `
-<span class="terminal-line success">Rama Devi - Senior .NET Full Stack Developer</span>
-• 10+ Years IT Experience across Fortune 500 & Enterprise clients
-• Master's Degree (CalUMS, Los Angeles, CA) + BS in Computer Science
-• Expert in .NET 10/8, C#, ASP.NET Core, React, Blazor, Angular 19, AWS & Azure
-• Phone: (840) 977-6552 | Email: rkreddy313579@gmail.com
-    `,
-    skills: () => `
-<span class="terminal-line accent">Technical Stack Summary:</span>
-[Backend]    .NET 10 / 8 / 6, C#, ASP.NET Core, Web API, Microservices, SignalR, WCF
-[Data Layer] Entity Framework Core, Dapper, SQL Server 2022, Oracle 11g, DynamoDB
-[Cloud]      AWS (Lambda, EventBridge, SQS, S3) | Azure (AKS, Service Bus, Redis, Functions)
-[Frontend]   React (Hooks, Redux), Angular 19/18/8, Blazor WebAssembly, TypeScript, Tailwind
-[Testing]    xUnit, NUnit, MSTest, SpecFlow, Selenium, Postman, TDD
-[Security]   OAuth 2.0, OpenID Connect, HIPAA, FHIR, PCI-DSS, SOX Compliance
-    `,
-    experience: () => `
-<span class="terminal-line accent">Career Trajectory:</span>
-1. <span class="success">AETNA / CVS Health</span> (Jul 2025 - Present)   - Senior .NET Full Stack Developer
-2. <span class="success">LA County Office of Ed</span> (Jan 2022 - Jul 2025) - Senior .NET Full Stack Developer
-3. <span class="success">Microsoft</span> (Aug 2020 - Jan 2022)              - Sr .NET Developer (Purview & Substrate)
-4. <span class="success">Nationwide</span> (Jul 2019 - Aug 2020)             - .NET Core Windows App Developer
-5. <span class="success">eBay</span> (Feb 2019 - Jul 2019)                   - Sr .NET Developer (DSPM / PCI)
-6. <span class="success">Progressive Insurance</span> (Apr 2018 - Feb 2019)   - Senior Dot Net Developer
-7. <span class="success">Bartronics</span> (Feb 2013 - Aug 2015)             - Software Engineer / .NET
-    `,
-    architecture: () => `
-<span class="terminal-line accent">Architecture & Design Philosophy:</span>
-• Clean Architecture & Domain-Driven Design (DDD)
-• Event-Driven Microservices (AWS EventBridge + SQS + Lambda)
-• High-Throughput In-Memory Caching (Azure Redis Cache)
-• Real-time Enterprise Updates (SignalR WebSockets)
-• Zero-Trust Role Based Security (OAuth 2.0 + SSO)
-    `,
-    contact: () => `
-<span class="terminal-line success">Direct Contact Details:</span>
-• Email:    <a href="mailto:rkreddy313579@gmail.com" class="accent">rkreddy313579@gmail.com</a>
-• Phone:    <a href="tel:8409776552" class="accent">(840) 977-6552</a>
-• Location: California, USA (Open to Remote & Hybrid)
-    `,
-    stats: () => `
-<span class="terminal-line accent">Key Metrics:</span>
-• Total Experience: 10+ Years
-• Microservices Deployed: 40+
-• Fortune 500 Clients: Microsoft, CVS Health, Nationwide, eBay, Progressive
-• System Availability: 99.99% Uptime
-    `,
-    download: () => {
-      window.print();
-      return `<span class="terminal-line success">Opening print / export resume dialog...</span>`;
-    },
-    clear: () => {
-      terminalOutput.innerHTML = '';
-      return null;
-    }
-  };
-
-  terminalInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      const rawCmd = terminalInput.value.trim();
-      if (!rawCmd) return;
-
-      history.push(rawCmd);
-      historyIdx = history.length;
-
-      executeCommand(rawCmd);
-      terminalInput.value = '';
-    } else if (e.key === 'ArrowUp') {
-      if (historyIdx > 0) {
-        historyIdx--;
-        terminalInput.value = history[historyIdx];
-      }
-    } else if (e.key === 'ArrowDown') {
-      if (historyIdx < history.length - 1) {
-        historyIdx++;
-        terminalInput.value = history[historyIdx];
-      } else {
-        historyIdx = history.length;
-        terminalInput.value = '';
-      }
-    }
-  });
-
-  quickBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const cmd = btn.getAttribute('data-cmd');
-      terminalInput.value = cmd;
-      executeCommand(cmd);
-      terminalInput.value = '';
-    });
-  });
-
-  function executeCommand(cmdStr) {
-    const cleanCmd = cmdStr.toLowerCase().trim();
-    playUiSound('click');
-
-    // Print command prompt line
-    const promptLine = document.createElement('div');
-    promptLine.className = 'terminal-line';
-    promptLine.innerHTML = `<span class="terminal-ps-prompt">PS RamaDevi\\Portfolio&gt;</span> ${cmdStr}`;
-    terminalOutput.appendChild(promptLine);
-
-    if (commands[cleanCmd]) {
-      const res = commands[cleanCmd]();
-      if (res !== null) {
-        const resLine = document.createElement('div');
-        resLine.className = 'terminal-line';
-        resLine.innerHTML = res;
-        terminalOutput.appendChild(resLine);
-      }
-    } else {
-      const errorLine = document.createElement('div');
-      errorLine.className = 'terminal-line warn';
-      errorLine.innerHTML = `Command not recognized: '${cmdStr}'. Type <span class="accent">help</span> for a list of valid commands.`;
-      terminalOutput.appendChild(errorLine);
-    }
-
-    const termBody = document.querySelector('.terminal-body');
-    if (termBody) {
-      termBody.scrollTop = termBody.scrollHeight;
-    }
-  }
-}
-
-/* ==========================================================================
-   10. CONTACT FORM HANDLING
-   ========================================================================== */
-function initContactForm() {
-  const form = document.getElementById('contact-form');
-  if (!form) return;
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('form-name').value;
-    const email = document.getElementById('form-email').value;
-    const subject = document.getElementById('form-subject').value;
-    const message = document.getElementById('form-message').value;
-
-    if (!name || !email || !message) {
-      showToast('Please fill in all required fields.', 'warn');
-      return;
-    }
-
-    playUiSound('success');
-    showToast(`Thank you, ${name}! Your inquiry has been received.`);
-    form.reset();
-  });
-}
-
-/* ==========================================================================
-   11. CLIPBOARD COPY UTILITIES
+   11. CLIPBOARD & TOAST
    ========================================================================== */
 function initClipboard() {
-  const copyEmailBtn = document.getElementById('copy-email-btn');
-  if (!copyEmailBtn) return;
-
-  copyEmailBtn.addEventListener('click', () => {
-    const email = 'rkreddy313579@gmail.com';
-    navigator.clipboard.writeText(email).then(() => {
-      playUiSound('click');
-      showToast('Email address copied to clipboard!');
-    }).catch(() => {
-      showToast('Email: ' + email);
+  const copyBtns = document.querySelectorAll('#copy-email-btn, .copy-chip-btn');
+  copyBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const email = 'rkreddy313579@gmail.com';
+      navigator.clipboard.writeText(email).then(() => {
+        playUiSound('click');
+        showToast('Email address copied to clipboard!');
+      }).catch(() => {
+        showToast('Email: ' + email);
+      });
     });
   });
 }
 
-/* ==========================================================================
-   TOAST NOTIFICATION ENGINE
-   ========================================================================== */
-let toastTimeout;
-function showToast(message, type = 'info') {
-  const toast = document.getElementById('toast-notification');
-  const toastText = document.getElementById('toast-text');
-  if (!toast || !toastText) return;
+function initNavScroll() {
+  const nav = document.querySelector('.nav-container');
+  const mobileToggle = document.getElementById('mobile-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  const links = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('section[id]');
 
-  toastText.textContent = message;
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      const top = s.offsetTop - 140;
+      if (window.scrollY >= top) {
+        current = s.getAttribute('id');
+      }
+    });
+
+    links.forEach(l => {
+      l.classList.remove('active');
+      if (l.getAttribute('href') === `#${current}`) {
+        l.classList.add('active');
+      }
+    });
+  });
+
+  if (mobileToggle && navLinks) {
+    mobileToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      playUiSound('click');
+    });
+
+    links.forEach(l => {
+      l.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+      });
+    });
+  }
+}
+
+let toastTimeout;
+function showToast(msg) {
+  const toast = document.getElementById('toast-notification');
+  const text = document.getElementById('toast-text');
+  if (!toast || !text) return;
+
+  text.textContent = msg;
   toast.classList.add('show');
 
   clearTimeout(toastTimeout);
   toastTimeout = setTimeout(() => {
     toast.classList.remove('show');
-  }, 3500);
+  }, 3200);
 }
